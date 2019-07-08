@@ -18,7 +18,7 @@ def main():
     except:
         print("missing or invalid arguments")
         exit(0)
-
+    training = config['training']
     # create the experiments dirs
     create_dirs([config['summary_dir'], config['ckpt_dir']])
     # create tensorflow session
@@ -28,7 +28,7 @@ def main():
         intra_op_parallelism_threads=0,
     )
     # session_config.gpu_options.allow_growth = True
-    # session_config.gpu_options.per_process_gpu_memory_fraction = 0.4
+    # session_config.gpu_options.per_process_gpu_memory_fraction = 0.8
 
     sess = tf.Session(config=session_config)
 
@@ -43,9 +43,12 @@ def main():
     # load model if exists
     model.load(sess)
     # here you train your model
-    trainer.train()
-
+    if training:
+        trainer.train()
     # trainers.test()
+    else:
+        testfile = config['test']
+        trainer.test(testfile)
 
 
 if __name__ == '__main__':

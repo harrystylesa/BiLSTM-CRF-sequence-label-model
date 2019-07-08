@@ -9,10 +9,8 @@ from tensorflow.contrib import rnn
 class Bi_LSTM_crf(BaseModel):
     def __init__(self, config):
         super(Bi_LSTM_crf, self).__init__(config)
-        self.saver = None
         self.X = None
         self.y = None
-        self.batch_size = config['batch_size']
         self.time_step_size = config['time_step_size']
         self.vocab_size = config['vocab_size']
         self.embedding_size = config['embedding_size']
@@ -24,6 +22,7 @@ class Bi_LSTM_crf(BaseModel):
         # self.keep_prob = config['keep_prob']
         self.keep_prob = tf.placeholder(tf.float32, [], name='keep_prob')
         self.lr = tf.placeholder(tf.float32, name='learning_rate')
+        self.batch_size = tf.placeholder(tf.int32, [], name='batch_size')
         self.build_model()
         self.init_saver()
 
@@ -34,8 +33,8 @@ class Bi_LSTM_crf(BaseModel):
         with tf.variable_scope('Inputs'):
             self.X = tf.placeholder(tf.int32, [None, self.time_step_size], name='X_input')
             self.y = tf.placeholder(tf.int32, [None, self.time_step_size], name='y_input')
-            length = tf.reduce_sum(tf.sign(self.X), reduction_indices=1)
-            length = tf.cast(length, tf.int32)
+            self.length = tf.reduce_sum(tf.sign(self.X), reduction_indices=1)
+            self.length = tf.cast(self.length, tf.int32)
 
         bilstm_output = self.bi_lstm(self.X)
 
@@ -56,19 +55,18 @@ class Bi_LSTM_crf(BaseModel):
             # activations = tf.nn.softmax(preactivate, name='activation')
             # tf.summary.histogram('activations', activations)
 
-        global_step = tf.Variable(0, trainable=False, name="global_step", dtype=tf.int32)
-        preactive = tf.reshape(preactivate, [self.batch_size, self.time_step_size, self.class_num])
+        self.preactive = tf.reshape(preactivate, [self.batch_size, self.time_step_size, self.class_num])
         with tf.name_scope('CRF'):
-            log_likelihood, transition_params = tf.contrib.crf.crf_log_likelihood(preactive, self.y, length)
-            batch_pred_sequence, batch_viterbi_score = tf.contrib.crf.crf_decode(
-                preactive, transition_params, length)
-            self.loss = tf.reduce_mean(-log_likelihood)
+            self.log_likelihood, self.transition_params = tf.contrib.crf.crf_log_likelihood(self.preactive, self.y, self.length)
+            self.batch_pred_sequence, self.batch_viterbi_score = tf.contrib.crf.crf_decode(
+                self.preactive, self.transition_params, self.length)
+            self.loss = tf.reduce_mean(-self.log_likelihood)
             summary = tf.summary.scalar("loss", self.loss)
 
         with tf.name_scope('Optimizer'):
             optimizer = tf.train.AdamOptimizer(learning_rate=self.lr)
             tf.summary.scalar('learning_rate', self.lr)
-            self.opt = optimizer.minimize(self.loss, global_step=global_step)
+            self.opt = optimizer.minimize(self.loss, global_step=self.global_step_tensor)
         # summaries合并
         self.merged = tf.summary.merge_all()
         print('Finished creating the bi-lstm model.')
