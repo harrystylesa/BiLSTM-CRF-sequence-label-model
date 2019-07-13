@@ -2,7 +2,7 @@ ner_config = {
     "continue": False,
     "training": True,
     "batch_size": 8,
-    "class_num": 27,
+    "class_num": 26,
     "decay": 0.85,
     "display_batch": 5,  # 每个 epoch 显示结果
     "epoch_num": 20,

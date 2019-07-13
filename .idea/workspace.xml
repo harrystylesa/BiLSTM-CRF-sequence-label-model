@@ -2,22 +2,15 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="70305676-82bd-449e-b8c4-ede62883b129" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/mains/ner.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/configs/cws_config.py" beforeDir="false" afterPath="$PROJECT_DIR$/configs/cws_config.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/cws/id2label.csv" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/cws/test_cws1.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/cws/test_cws1.txt_seg.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/cws/test_cws1.txt_seg1.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/cws/test_cws1.txt_seg2.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/cws/test_cws1.txt_seg3.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/cws/train_cws.txt.tfrecords" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/cws/val_cws.txt.tfrecords" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/cws/word2id.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/configs/ner_config.py" beforeDir="false" afterPath="$PROJECT_DIR$/configs/ner_config.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/ner/id2label.csv" beforeDir="false" afterPath="$PROJECT_DIR$/data/ner/id2label.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/ner/id2word.csv" beforeDir="false" afterPath="$PROJECT_DIR$/data/ner/id2word.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/ner/label2id.csv" beforeDir="false" afterPath="$PROJECT_DIR$/data/ner/label2id.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/ner/train_ner.txt.tfrecords" beforeDir="false" afterPath="$PROJECT_DIR$/data/ner/train_ner.txt.tfrecords" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/ner/val_ner.txt.tfrecords" beforeDir="false" afterPath="$PROJECT_DIR$/data/ner/val_ner.txt.tfrecords" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/ner/word2id.csv" beforeDir="false" afterPath="$PROJECT_DIR$/data/ner/word2id.csv" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/data_preprocessor/preprocessor.py" beforeDir="false" afterPath="$PROJECT_DIR$/data_preprocessor/preprocessor.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mains/cws.py" beforeDir="false" afterPath="$PROJECT_DIR$/mains/cws.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/utils/cws_evaluate.py" beforeDir="false" afterPath="$PROJECT_DIR$/utils/cws_evaluate.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -27,7 +20,7 @@
   </component>
   <component name="CoverageDataManager">
     <SUITE FILE_PATH="coverage/bi_lstm_crf$cws.coverage" NAME="cws Coverage Results" MODIFIED="1562572576506" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/mains" />
-    <SUITE FILE_PATH="coverage/BiLSTM_CRF_sequence_label_model$preprocessor.coverage" NAME="preprocessor Coverage Results" MODIFIED="1563024065352" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/data_preprocessor" />
+    <SUITE FILE_PATH="coverage/BiLSTM_CRF_sequence_label_model$preprocessor.coverage" NAME="preprocessor Coverage Results" MODIFIED="1563028097325" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/data_preprocessor" />
     <SUITE FILE_PATH="coverage/BiLSTM_CRF_sequence_label_model$cws.coverage" NAME="cws Coverage Results" MODIFIED="1562995779252" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/mains" />
     <SUITE FILE_PATH="coverage/BiLSTM_CRF_sequence_label_model$ner.coverage" NAME="ner Coverage Results" MODIFIED="1563024905531" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/mains" />
     <SUITE FILE_PATH="coverage/BiLSTM_CRF_sequence_label_model$notebook.coverage" NAME="notebook Coverage Results" MODIFIED="1563008393998" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/data_preprocessor" />
@@ -35,11 +28,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/configs/ner_config.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="608">
-              <caret line="32" column="11" selection-start-line="32" selection-start-column="11" selection-end-line="32" selection-end-column="11" />
+            <state relative-caret-position="19">
+              <caret line="4" column="19" selection-start-line="4" selection-start-column="19" selection-end-line="4" selection-end-column="19" />
             </state>
           </provider>
         </entry>
@@ -47,7 +40,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/mains/ner.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="646">
+            <state relative-caret-position="378">
               <caret line="34" column="29" selection-start-line="34" selection-start-column="29" selection-end-line="34" selection-end-column="29" />
               <folding>
                 <element signature="e#0#23#0" expanded="true" />
@@ -56,13 +49,26 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/trainers/cws_trainer.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="798">
+            <state relative-caret-position="-171">
               <caret line="42" column="72" selection-start-line="42" selection-start-column="55" selection-end-line="42" selection-end-column="72" />
               <folding>
                 <element signature="e#0#37#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/data_preprocessor/preprocessor.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="171">
+              <caret line="83" column="31" selection-start-line="83" selection-start-column="31" selection-end-line="83" selection-end-column="31" />
+              <folding>
+                <element signature="e#201#1824#0" />
+                <element signature="e#1850#2242#0" />
               </folding>
             </state>
           </provider>
@@ -104,15 +110,15 @@
         <option value="$PROJECT_DIR$/configs/cws_config.py" />
         <option value="$PROJECT_DIR$/mains/cws.py" />
         <option value="$PROJECT_DIR$/data_preprocessor/notebook.py" />
+        <option value="$PROJECT_DIR$/mains/ner.py" />
         <option value="$PROJECT_DIR$/data_preprocessor/preprocessor.py" />
         <option value="$PROJECT_DIR$/configs/ner_config.py" />
-        <option value="$PROJECT_DIR$/mains/ner.py" />
       </list>
     </option>
   </component>
-  <component name="ProjectFrameBounds">
-    <option name="x" value="90" />
-    <option name="y" value="111" />
+  <component name="ProjectFrameBounds" extendedState="6">
+    <option name="x" value="79" />
+    <option name="y" value="112" />
     <option name="width" value="1449" />
     <option name="height" value="897" />
   </component>
@@ -223,7 +229,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Python.ner">
+  <component name="RunManager" selected="Python.preprocessor">
     <configuration name="cws" type="PythonConfigurationType" factoryName="Python">
       <module name="bi_lstm_crf" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -343,8 +349,8 @@
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="Python.ner" />
         <item itemvalue="Python.preprocessor" />
+        <item itemvalue="Python.ner" />
         <item itemvalue="Python.notebook" />
         <item itemvalue="Python.cws_evaluate" />
       </list>
@@ -366,21 +372,23 @@
       <workItem from="1562995364222" duration="1712000" />
       <workItem from="1562997277728" duration="17458000" />
       <workItem from="1563022115641" duration="3183000" />
+      <workItem from="1563027852762" duration="382000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="55857000" />
+    <option name="totallyTimeSpent" value="56239000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="60" y="74" width="966" height="598" extended-state="0" />
+    <frame x="-7" y="33" width="1295" height="695" extended-state="6" />
+    <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.19601329" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.14772727" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.3268206" />
-      <window_info anchor="bottom" id="Run" order="2" weight="0.49785408" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.4973357" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.43161634" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -465,28 +473,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/data_preprocessor/notebook.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="297">
-          <caret line="57" column="22" selection-start-line="57" selection-start-column="22" selection-end-line="57" selection-end-column="22" />
-          <folding>
-            <element signature="e#0#19#0" expanded="true" />
-            <element signature="e#69#113#0" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/data_preprocessor/preprocessor.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-383">
-          <caret line="77" column="38" selection-start-line="77" selection-start-column="38" selection-end-line="77" selection-end-column="38" />
-          <folding>
-            <element signature="e#201#1824#0" />
-            <element signature="e#1850#2242#0" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/data_preprocessor/notebook.py" />
     <entry file="file://$PROJECT_DIR$/mains/cws.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="297">
@@ -497,16 +484,9 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/configs/ner_config.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="608">
-          <caret line="32" column="11" selection-start-line="32" selection-start-column="11" selection-end-line="32" selection-end-column="11" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/mains/ner.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="646">
+        <state relative-caret-position="378">
           <caret line="34" column="29" selection-start-line="34" selection-start-column="29" selection-end-line="34" selection-end-column="29" />
           <folding>
             <element signature="e#0#23#0" expanded="true" />
@@ -514,13 +494,31 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/data_preprocessor/preprocessor.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="171">
+          <caret line="83" column="31" selection-start-line="83" selection-start-column="31" selection-end-line="83" selection-end-column="31" />
+          <folding>
+            <element signature="e#201#1824#0" />
+            <element signature="e#1850#2242#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/trainers/cws_trainer.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="798">
+        <state relative-caret-position="-171">
           <caret line="42" column="72" selection-start-line="42" selection-start-column="55" selection-end-line="42" selection-end-column="72" />
           <folding>
             <element signature="e#0#37#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/configs/ner_config.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="19">
+          <caret line="4" column="19" selection-start-line="4" selection-start-column="19" selection-end-line="4" selection-end-column="19" />
         </state>
       </provider>
     </entry>

@@ -77,7 +77,7 @@ def ner(data_dir):
         if not os.path.isdir(file):
             df = generate_dataframe(data_dir + '\\' + file, ner=True)
             dfs.append((data_dir + '\\' + file, df))
-    labels = ['N', 'X', 'XX', 'XXX', 'S-sym', 'B-sym', 'M-sym', 'E-sym', 'S-bod', 'B-bod', 'M-bod', 'E-bod', 'S-tre',
+    labels = ['N', 'XX', 'XXX', 'S-sym', 'B-sym', 'M-sym', 'E-sym', 'S-bod', 'B-bod', 'M-bod', 'E-bod', 'S-tre',
               'B-tre', 'M-tre', 'E-tre', 'S-dis', 'B-dis', 'M-dis', 'E-dis', 'S-tes', 'B-tes', 'M-tes', 'E-tes', 'B-nt',
               'M-nt', 'E-nt']
     word2id, label2id = create_dict(dfs, data_dir, labels)
@@ -85,8 +85,6 @@ def ner(data_dir):
                   for j, i in dfs]
     create_tfrecords(word2id, label2id, dfs_no_TBD, 32)
     return
-    print('ner function')
-    pass
 
 
 def generate_dataframe(file, ner):
