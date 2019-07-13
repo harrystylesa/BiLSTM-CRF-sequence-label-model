@@ -1,17 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="70305676-82bd-449e-b8c4-ede62883b129" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/configs/ner_config.py" beforeDir="false" afterPath="$PROJECT_DIR$/configs/ner_config.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/ner/id2label.csv" beforeDir="false" afterPath="$PROJECT_DIR$/data/ner/id2label.csv" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/ner/id2word.csv" beforeDir="false" afterPath="$PROJECT_DIR$/data/ner/id2word.csv" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/ner/label2id.csv" beforeDir="false" afterPath="$PROJECT_DIR$/data/ner/label2id.csv" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/ner/train_ner.txt.tfrecords" beforeDir="false" afterPath="$PROJECT_DIR$/data/ner/train_ner.txt.tfrecords" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/ner/val_ner.txt.tfrecords" beforeDir="false" afterPath="$PROJECT_DIR$/data/ner/val_ner.txt.tfrecords" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/ner/word2id.csv" beforeDir="false" afterPath="$PROJECT_DIR$/data/ner/word2id.csv" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/data_preprocessor/preprocessor.py" beforeDir="false" afterPath="$PROJECT_DIR$/data_preprocessor/preprocessor.py" afterDir="false" />
-    </list>
+    <list default="true" id="70305676-82bd-449e-b8c4-ede62883b129" name="Default Changelist" comment="" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -31,8 +21,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/configs/ner_config.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="19">
-              <caret line="4" column="19" selection-start-line="4" selection-start-column="19" selection-end-line="4" selection-end-column="19" />
+            <state relative-caret-position="207">
+              <caret line="29" column="40" lean-forward="true" selection-start-line="29" selection-start-column="40" selection-end-line="29" selection-end-column="40" />
             </state>
           </provider>
         </entry>
@@ -116,9 +106,9 @@
       </list>
     </option>
   </component>
-  <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="79" />
-    <option name="y" value="112" />
+  <component name="ProjectFrameBounds">
+    <option name="x" value="177" />
+    <option name="y" value="135" />
     <option name="width" value="1449" />
     <option name="height" value="897" />
   </component>
@@ -372,23 +362,22 @@
       <workItem from="1562995364222" duration="1712000" />
       <workItem from="1562997277728" duration="17458000" />
       <workItem from="1563022115641" duration="3183000" />
-      <workItem from="1563027852762" duration="382000" />
+      <workItem from="1563027852762" duration="532000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="56239000" />
+    <option name="totallyTimeSpent" value="56389000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-7" y="33" width="1295" height="695" extended-state="6" />
-    <editor active="true" />
+    <frame x="118" y="90" width="966" height="598" extended-state="0" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.14772727" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.2015504" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.3268206" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.4973357" />
+      <window_info anchor="bottom" id="Run" order="2" weight="0.6008584" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.43161634" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -517,8 +506,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/configs/ner_config.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="19">
-          <caret line="4" column="19" selection-start-line="4" selection-start-column="19" selection-end-line="4" selection-end-column="19" />
+        <state relative-caret-position="207">
+          <caret line="29" column="40" lean-forward="true" selection-start-line="29" selection-start-column="40" selection-end-line="29" selection-end-column="40" />
         </state>
       </provider>
     </entry>
