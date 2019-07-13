@@ -14,8 +14,14 @@ from itertools import chain
 
 def main(argv):
     data_dir = ""
-    help_short = "preprocessor.py -d <data_dir>"
-    help_long = "preprocessor.py --datadir=<data_dir>"
+    task = ""
+    help_short = "preprocessor.py -t <task> -d <data_dir>"
+    help_long = "preprocessor.py --task=<task> --datadir=<data_dir>"
+    if not len(argv) == 4:
+        print('Error: params count error, need 4 params, but %d was given' % len(argv))
+        print('Error:' + help_short)
+        print('   or:' + help_long)
+        sys.exit(1)
     try:
         # options, args = getopt.getopt(args, shortopts, longopts=[])
 
@@ -25,7 +31,7 @@ def main(argv):
 
         # 返回值options是以元组为元素的列表，每个元组的形式为：(选项串, 附加参数)，如：('-i', '192.168.0.1')
         # 返回值args是个列表，其中的元素是那些不含'-'或'--'的参数。
-        opts, args = getopt.getopt(argv, "hd:", ["help", "datadir="])
+        opts, args = getopt.getopt(argv, "ht:d:", ["help", "task=", "datadir="])
     except getopt.GetoptError:
         print('Error:' + help_short)
         print('   or:' + help_long)
@@ -36,21 +42,54 @@ def main(argv):
             print(help_short)
             print(help_long)
             sys.exit()
+        elif opt in ("-t", "--task"):
+            task = arg
         elif opt in ("-d", "--datadir"):
             data_dir = arg
             print('data_dir：', data_dir)
-    data_files = os.listdir(data_dir)
+            if not os.path.exists(data_dir):
+                print('Error: ' + data_dir + " does not exist, please check your params")
+                sys.exit(3)
+    if task == 'cws':
+        cws(data_dir)
+    elif task == 'ner':
+        ner(data_dir)
+    return
+
+
+def cws(data_dir):
     dfs = []
+    data_files = os.listdir(data_dir)
     for file in data_files:
         if not os.path.isdir(file):
-            df = generate_dataframe(data_dir + '\\' + file)
+            df = generate_dataframe(data_dir + '\\' + file, ner=False)
             dfs.append((data_dir + '\\' + file, df))
-    word2id, label2id = create_dict(dfs, data_dir)
+    labels = ['x', 's', 'b', 'm', 'e']
+    word2id, label2id = create_dict(dfs, data_dir, labels)
     create_tfrecords(word2id, label2id, dfs, 32)
     return
 
 
-def generate_dataframe(file):
+def ner(data_dir):
+    dfs = []
+    data_files = os.listdir(data_dir)
+    for file in data_files:
+        if not os.path.isdir(file):
+            df = generate_dataframe(data_dir + '\\' + file, ner=True)
+            dfs.append((data_dir + '\\' + file, df))
+    labels = ['N', 'X', 'XX', 'XXX', 'S-sym', 'B-sym', 'M-sym', 'E-sym', 'S-bod', 'B-bod', 'M-bod', 'E-bod', 'S-tre',
+              'B-tre', 'M-tre', 'E-tre', 'S-dis', 'B-dis', 'M-dis', 'E-dis', 'S-tes', 'B-tes', 'M-tes', 'E-tes', 'B-nt',
+              'M-nt', 'E-nt']
+    word2id, label2id = create_dict(dfs, data_dir, labels)
+    dfs_no_TBD = [(j, i[~i['label'].astype(str).str.contains('TBD')])
+                  for j, i in dfs]
+    create_tfrecords(word2id, label2id, dfs_no_TBD, 32)
+    return
+    print('ner function')
+    pass
+
+
+def generate_dataframe(file, ner):
     '''
     create a csv file which contains words, label and length from file
     :param file: str path to file
@@ -66,9 +105,14 @@ def generate_dataframe(file):
         for line in raw.readlines():
             sentences = re.split(punctuation_pattern, line.strip())
             sentences = list(filter(None, sentences))
-            sentence_label = list(map(getLabelOfSentence, sentences))
-            sentence_text = list(map(lambda x: x.replace(" ", ""), sentences))
-            sentence_text = [list(i) for i in sentence_text]
+            if ner:
+                result = list(map(get_ner_labels_of_sentence, sentences))
+                sentence_text = [i[0] for i in result]
+                sentence_label = [i[1] for i in result]
+            else:
+                sentence_label = list(map(get_cws_labels_of_sentence, sentences))
+                sentence_text = list(map(lambda x: x.replace(" ", ""), sentences))
+                sentence_text = [list(i) for i in sentence_text]
             text.extend(sentence_text)
             label.extend(sentence_label)
 
@@ -79,7 +123,89 @@ def generate_dataframe(file):
     return df
 
 
-def getLabelOfSentence(s):
+def get_ner_labels_of_sentence(sentence):
+    label_list = ['tes', 'bod', 'sym', 'tre', 'dis', 'nt']
+    sentence = sentence.strip().replace(' ', '')
+    stack = [None for i in sentence]
+    words = []
+    labels = []
+    temp_list = []
+    add_to_stack = False
+    layer = 0
+    top = -1
+    i = 0
+    index = -1
+    multi = 0
+    while i < len(sentence):
+        if sentence[i] == '[':
+            top = top + 1
+            stack[top] = '['
+            add_to_stack = True
+            i = i + 1
+        elif sentence[i] == ']':
+            if sentence[i + 1:i + 4] in label_list:
+                label = sentence[i + 1:i + 4]
+                i = i + 4
+            elif sentence[i + 1: i + 3] in label_list:
+                label = sentence[i + 1:i + 3]
+                i = i + 3
+            else:
+                while stack[top] != '[' and top > -1:
+                    top -= 1
+                top -= 1
+                temp_list = []
+                i = i + 1
+                if top == -1:
+                    add_to_stack = False
+                layer = 0
+                continue
+            while stack[top] != '[' and top > -1:
+                temp_list.append(stack[top])
+                top -= 1
+            j = top
+            top -= 1
+            layer = 0
+            while j > -1 and stack[j] == '[':
+                layer = layer + 1
+                j = j - 1
+            temp_list.reverse()
+            for k in range(len(temp_list)):
+                if len(temp_list) == 1:
+                    labels[temp_list[k]] = 'S-' + label
+                else:
+                    if k == 0:
+                        if layer > 1:
+                            labels[temp_list[k]] = ('X' * layer)
+                            # multi = temp_list[k]
+                        elif labels[temp_list[k] + 1] != 'TBD':
+                            labels[temp_list[k]] = 'M-' + label
+                        else:
+                            labels[temp_list[k]] = 'B-' + label
+                    elif k == len(temp_list) - 1:
+                        labels[temp_list[k]] = 'E-' + label
+                    else:
+                        labels[temp_list[k]] = 'M-' + label
+                    # words.append(temp_list[k])
+            if top == -1:
+                add_to_stack = False
+            temp_list = []
+            layer = 0
+        elif add_to_stack:
+            top = top + 1
+            index = index + 1
+            labels.append('TBD')
+            stack[top] = index
+            words.append(sentence[i])
+            i = i + 1
+        else:
+            words.append(sentence[i])
+            labels.append('N')
+            index += 1
+            i = i + 1
+    return words, labels
+
+
+def get_cws_labels_of_sentence(s):
     '''
     return a list of sentence's labels
     :param s: str
@@ -161,7 +287,7 @@ def y_padding(label, label2id, max_len):
     return ids
 
 
-def create_dict(l, data_dir):
+def create_dict(l, data_dir, labels):
     '''
     calculate and print vocabulary size and create word2id id2word label2id id2label files from l
     :param l: list((file, dataframe))
@@ -174,7 +300,6 @@ def create_dict(l, data_dir):
     word_series = word_series.value_counts()
     word_set = word_series.index
     word_set_ids = range(1, len(word_set) + 1)
-    labels = ['x', 's', 'b', 'm', 'e']
     label_ids = range(len(labels))
     print("vocabulary size: " + str(len(word_set)))
 

@@ -29,6 +29,6 @@ cws_config = {
     "ckpt_dir": "../ckpt/cws",  # 模型保存目录
     "summary_dir": "../summary",  # 保存目录
     "log_dir": "../log",
-    "meta_file": "../ckpt/bi-lstm-cws.ckpt-10.meta",
+    "meta_file": "../ckpt/cws/bi-lstm-cws.ckpt-10.meta",
     "reset_default_graph": False  # 重置计算图
 }

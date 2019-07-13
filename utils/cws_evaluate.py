@@ -46,4 +46,4 @@ def cws_evaluete(real, mine):
 
 if __name__ == '__main__':
     config = cws_config.cws_config
-    cws_evaluete(config['test'], config['test'] + "_seg3.txt")
+    cws_evaluete(config['test'], config['test'] + "_seg2.txt")

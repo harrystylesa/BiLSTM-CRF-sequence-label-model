@@ -47,8 +47,9 @@ def main():
         trainer.train()
     # trainers.test()
     else:
-        testfile = config['test']
-        trainer.test(testfile)
+        # testfile = config['test']
+        # trainer.test(testfile)
+        pass
 
 
 if __name__ == '__main__':
