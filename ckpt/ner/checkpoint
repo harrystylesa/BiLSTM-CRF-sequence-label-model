@@ -1,0 +1,6 @@
+model_checkpoint_path: "./ner-39060"
+all_model_checkpoint_paths: "./ner-30380"
+all_model_checkpoint_paths: "./ner-32550"
+all_model_checkpoint_paths: "./ner-34720"
+all_model_checkpoint_paths: "./ner-36890"
+all_model_checkpoint_paths: "./ner-39060"

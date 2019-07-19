@@ -1,6 +1,6 @@
 ner_config = {
     "continue": False,
-    "training": True,
+    "training": False,
     "batch_size": 8,
     "class_num": 26,
     "decay": 0.85,
@@ -20,10 +20,11 @@ ner_config = {
     "time_step_size": 32,
     "train_sample_size": 32890,
     "val_sample_size": 1710,
+    "embedding_vocab_size": 636014,
     "vocab_size": 3000,  # 样本中不同字的个数，根据处理数据的时候得到
     "train": "../data/ner/train_ner.txt.tfrecords",
     "val": "../data/ner/val_ner.txt.tfrecords",
-    "test": "../data/ner/test_ner1.txt",
+    "test": "../data/ner/test_ner1.txt_raw.txt",
     "word2id": "../data/ner/word2id.csv",
     "id2label": "../data/ner/id2label.csv",
     "ckpt_dir": "../ckpt/ner",  # 模型保存目录

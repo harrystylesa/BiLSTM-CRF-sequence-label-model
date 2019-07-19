@@ -144,11 +144,13 @@ class CWSTrainer(BaseTrain):
         result = []
         if len(text) > 0:
             rest = text
-            if len(rest) > 32:
-                textlist.append(rest[:min(32, len(rest))])
-                rest = rest[32:]
-            else:
-                textlist = [text]
+            while True:
+                if len(rest) > 32:
+                    textlist.append(rest[:min(32, len(rest))])
+                    rest = rest[32:]
+                else:
+                    textlist = [rest]
+                    break
             for t in textlist:
                 text_len = len(t)
                 X_batch = self.text2ids(t, word2id)  # 这里每个 batch 是一个样本

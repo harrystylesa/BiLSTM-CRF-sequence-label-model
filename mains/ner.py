@@ -2,7 +2,7 @@ import tensorflow as tf
 
 from data_loader.data_generator import DataGenerator
 from models.bi_lstm_crf import Bi_LSTM_crf
-from trainers.cws_trainer import CWSTrainer
+from trainers.ner_trainer import NERTrainer
 from utils.dirs import create_dirs
 from configs import ner_config
 import os
@@ -39,16 +39,15 @@ def main():
     # create an instance of the model you want
     model = Bi_LSTM_crf(config)
     # create trainers and pass all the previous components to it
-    trainer = CWSTrainer(sess, model, train_data, val_data, config)
+    trainer = NERTrainer(sess, model, train_data, val_data, config)
     # load model if exists
     model.load(sess)
     # here you train your model
     if training:
         trainer.train()
-    # trainers.test()
     else:
-        # testfile = config['test']
-        # trainer.test(testfile)
+        testfile = config['test']
+        trainer.test(testfile)
         pass
 
 
